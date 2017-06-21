@@ -1,6 +1,6 @@
 {
   "name": "shalvah/laravel-jsend",
-  "description": "Laravel helpers to send Jsend-compliant responses",
+  "description": "Simple Laravel helpers to generate JSend-compliant responses",
   "keywords": ["jsend", "laravel", "json"],
   "license": "MIT",
   "homepage": "http://shalvah.me/laravel-jsend",
