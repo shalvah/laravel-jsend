@@ -1,5 +1,7 @@
 # laravel-jsend
 
+[![Latest Stable Version](https://poser.pugx.org/shalvah/laravel-jsend/v/stable)](https://packagist.org/packages/shalvah/laravel-jsend) [![Total Downloads](https://poser.pugx.org/shalvah/laravel-jsend/downloads)](https://packagist.org/packages/shalvah/laravel-jsend)
+
 Simple helpers to generate [JSend-compliant](https://labs.omniti.com/labs/jsend) responses for your Laravel app
 
 The [JSend specification](https://labs.omniti.com/labs/jsend) lays down some rules for how JSON responses from web servers should be formatted. JSend is especially suited for REST-style applications and APIs.
