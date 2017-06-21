@@ -2,7 +2,7 @@
 
 if (!function_exists("jsend_error")) {
     /**
-     * @param $message Error message
+     * @param string $message Error message
      * @param string $code Optional custom error code
      * @param string | array $data Optional data
      * @param int $status HTTP status code
@@ -25,7 +25,7 @@ if (!function_exists("jsend_error")) {
 
 if (!function_exists("jsend_fail")) {
     /**
-     * @param $data
+     * @param array $data
      * @param int $status HTTP status code
      * @param array $extraHeaders
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response

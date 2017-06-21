@@ -99,11 +99,16 @@ Generates a response:
   "status": "error",
   "message":"Unable to connect to database",
   "code": "E001",
-  "type": "database error"
+  "data": {
+    "type": "database error"
+  }
 }
 ```
 
-> Note: for each helper, you may also specify a custom http status code and additional headers
+> Note: for each helper, you may also specify a custom HTTP status code and additional headers
+```php
+jsend_success($post, 201, ["X-My-Header" => "header value"]);
+```
 
 ## Installation
 ```bash
