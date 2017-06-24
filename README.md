@@ -53,13 +53,13 @@ You may pass an Eloquent model instead of an array as the "data" object:
 $post = Post::create([
     "title" => "New life",
     "body" => "Trust me, this is great!"]);
-jsend_success(["post" => $post]);
+return jsend_success($post);
 ```
 
 ### `jsend_fail`
 The `jsend_fail` function creates a JSend **fail** response instance.
 ```php
-jsend_fail([
+return jsend_fail([
     "title" => "title is required",
     "body" => "body must be 50 - 10000 words"]);
 ```
@@ -78,7 +78,7 @@ Generates a response:
 ### `jsend_error`
 The `jsend_error` function creates a JSend **error** response instance.
 ```php
-jsend_error("Unable to connect to database");
+return jsend_error("Unable to connect to database");
 ```
 
 Generates a response:
@@ -90,7 +90,7 @@ Generates a response:
 ```
 You may also pass optional `code` and `data` objects.
 ```php
-jsend_error("Unable to connect to database", 'E0001', ['type' => 'database errpr']);
+return jsend_error("Unable to connect to database", 'E0001', ['type' => 'database errpr']);
 ```
 
 Generates a response:
@@ -107,7 +107,7 @@ Generates a response:
 
 > Note: for each helper, you may also specify a custom HTTP status code and additional headers
 ```php
-jsend_success($post, 201, ["X-My-Header" => "header value"]);
+return jsend_success($post, 201, ["X-My-Header" => "header value"]);
 ```
 
 ## Installation
