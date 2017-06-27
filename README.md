@@ -90,7 +90,7 @@ Generates a response:
 ```
 You may also pass optional `code` and `data` objects.
 ```php
-return jsend_error("Unable to connect to database", 'E0001', ['type' => 'database errpr']);
+return jsend_error("Unable to connect to database", 'E0001', ['type' => 'database error']);
 ```
 
 Generates a response:
