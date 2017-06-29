@@ -105,9 +105,11 @@ Generates a response:
 }
 ```
 
-> Note: for each helper, you may also specify a custom HTTP status code and additional headers
+> Note: for each helper, the HTTP status codes are set automatically (to 200, 400, and 500 for `success`, `fail`, and `error` respectively), and the header `Content-type: application/json` is set. If you wish, you may specify a HTTP status code and additional headers as the last two arameters.
 ```php
 return jsend_success($post, 201, ["X-My-Header" => "header value"]);
+return jsend_fail(["id" => "id not found"], 404);
+return jsend_error("Unable to connect to database", 'E0001', [], 503, ["X-My-Header" => "header value"]);
 ```
 
 ## Installation
