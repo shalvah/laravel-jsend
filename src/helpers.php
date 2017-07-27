@@ -17,9 +17,8 @@ if (!function_exists("jsend_error")) {
         ];
         if ($code) $response['code'] = $code;
         if ($data) $response['data'] = $data;
-        $response = json_encode($response);
-        $headers = array_merge(["Content-type" => "application/json"], $extraHeaders);
-        return response($response, $status, $headers);
+
+        return response()->json($response, $status, $extraHeaders);
     }
 }
 
@@ -32,12 +31,12 @@ if (!function_exists("jsend_fail")) {
      */
     function jsend_fail($data, $status = 400, $extraHeaders = [])
     {
-        $response = json_encode([
+        $response = [
             "status" => "fail",
             "data" => $data
-        ]);
-        $headers = array_merge(["Content-type" => "application/json"], $extraHeaders);
-        return response($response, $status, $headers);
+        ];
+
+        return response()->json($response, $status, $extraHeaders);
     }
 }
 
@@ -51,11 +50,11 @@ if (!function_exists("jsend_success")) {
     function jsend_success($data = [], $status = 200, $extraHeaders = [])
     {
         $data = ($data instanceof Illuminate\Database\Eloquent\Model) ? $data->toArray() : $data;
-        $response = json_encode([
+        $response = [
             "status" => "success",
             "data" => $data
-        ]);
-        $headers = array_merge(["Content-type" => "application/json"], $extraHeaders);
-        return response($response, $status, $headers);
+        ];
+
+        return response()->json($response, $status, $extraHeaders);
     }
 }
