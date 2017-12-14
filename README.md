@@ -8,11 +8,12 @@ The [JSend specification](https://labs.omniti.com/labs/jsend) lays down some rul
 
 ## Usage
 In your controller:
+
 ```php
 public function create(Request $request)
 {
   $userData = $request->input('data');
-  if (!isset($userData['email']))
+  if (empty($userData['email']))
       return jsend_fail(['email' => 'Email is required']);
   
   try {
@@ -28,10 +29,11 @@ public function create(Request $request)
 ### `jsend_success`
 The `jsend_success` function creates a JSend **success** response instance.
 ```php
-jsend_success(["post" => [
+return jsend_success([
   "id" => 2,
   "title" => "New life",
-  "body" => "Trust me, this is great!"]]);
+  "body" => "Trust me, this is great!"
+]);
 ```
 
 Generates a response:
@@ -39,20 +41,16 @@ Generates a response:
 {
   "status": "success",
   "data": {
-    "post": {
-      "id": 2,
-      "title": "New life",
-      "body": "Trust me, this is great!"
-    }
+    "id": 2,
+    "title": "New life",
+    "body": "Trust me, this is great!"
   }
 }
 ```
 You may pass an Eloquent model instead of an array as the "data" object:
 
 ```php
-$post = Post::create([
-    "title" => "New life",
-    "body" => "Trust me, this is great!"]);
+$post = Post::find($id);
 return jsend_success($post);
 ```
 
@@ -61,7 +59,8 @@ The `jsend_fail` function creates a JSend **fail** response instance.
 ```php
 return jsend_fail([
     "title" => "title is required",
-    "body" => "body must be 50 - 10000 words"]);
+    "body" => "body must be 50 - 10000 words"
+]);
 ```
 
 Generates a response:
@@ -108,11 +107,12 @@ Generates a response:
 > Note: for each helper, the HTTP status codes are set automatically (to 200, 400, and 500 for `success`, `fail`, and `error` respectively), and the header `Content-type: application/json` is set. If you wish, you may specify a HTTP status code and additional headers as the last two parameters.
 ```php
 return jsend_success($post, 201, ["X-My-Header" => "header value"]);
-return jsend_fail(["id" => "id not found"], 404);
+return jsend_fail(["location_id" => "Location not found"], 404);
 return jsend_error("Unable to connect to database", 'E0001', [], 503, ["X-My-Header" => "header value"]);
 ```
 
 ## Installation
+
 ```bash
 composer require shalvah/laravel-jsend
 ```
