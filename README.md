@@ -17,7 +17,7 @@ public function create(Request $request)
       return jsend_fail(['email' => 'Email is required']);
   
   try {
-      $user = new User($userData):
+      $user = User::create($userData):
       return jsend_success($user);
   } catch (Exception $e) {
       return jsend_error('Unable to create user: '.$e->getMessage());
