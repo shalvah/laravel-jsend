@@ -9,14 +9,14 @@ if (!function_exists("jsend_error")) {
      * @param array $extraHeaders
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
      */
-    function jsend_error($message, $code = "", $data = "", $status = 500, $extraHeaders = [])
+    function jsend_error($message, $code = null, $data = null, $status = 500, $extraHeaders = [])
     {
         $response = [
             "status" => "error",
             "message" => $message
         ];
-        if ($code) $response['code'] = $code;
-        if ($data) $response['data'] = $data;
+        !is_null($code) && $response['code'] = $code;
+        !is_null($data) && $response['data'] = $data;
 
         return response()->json($response, $status, $extraHeaders);
     }
