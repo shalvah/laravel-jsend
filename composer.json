@@ -1,6 +1,6 @@
 {
   "name": "shalvah/laravel-jsend",
-  "description": "Laravel helpers to send Jsend-compliant responses",
+  "description": "Laravel helpers to easily send JSend-compliant responses",
   "keywords": ["jsend", "laravel", "json"],
   "license": "MIT",
   "homepage": "http://shalvah.me/laravel-jsend",
@@ -18,9 +18,20 @@
     "php": ">=5.6.4",
     "laravel/framework": "^5.1"
   },
+  "require-dev": {
+    "phpunit/phpunit": "^5.0 || ^6.0 || ^7.3"
+  },
   "autoload": {
     "files": [
       "src/helpers.php"
     ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Shalvah\\LaravelJsend\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "phpunit tests"
   }
 }
