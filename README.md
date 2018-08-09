@@ -1,6 +1,7 @@
 # laravel-jsend
 
 [![Latest Stable Version](https://poser.pugx.org/shalvah/laravel-jsend/v/stable)](https://packagist.org/packages/shalvah/laravel-jsend) [![Total Downloads](https://poser.pugx.org/shalvah/laravel-jsend/downloads)](https://packagist.org/packages/shalvah/laravel-jsend)
+[![Build Status](https://travis-ci.com/shalvah/laravel-jsend.svg?branch=master)](https://travis-ci.com/shalvah/laravel-jsend)
 
 Simple helpers to generate [JSend-compliant](https://labs.omniti.com/labs/jsend) responses for your Laravel app
 
