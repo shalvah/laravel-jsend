@@ -49,7 +49,6 @@ if (!function_exists("jsend_success")) {
      */
     function jsend_success($data = [], $status = 200, $extraHeaders = [])
     {
-        $data = ($data instanceof Illuminate\Database\Eloquent\Model) ? $data->toArray() : $data;
         $response = [
             "status" => "success",
             "data" => $data
