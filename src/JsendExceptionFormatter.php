@@ -16,7 +16,7 @@ trait JsendExceptionFormatter
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Illuminate\Validation\ValidationException  $exception
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
      */
     protected function invalidJson($request, ValidationException $exception)
     {
@@ -31,7 +31,7 @@ trait JsendExceptionFormatter
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Exception $e
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
      */
     protected function prepareJsonResponse($request, Exception $e)
     {
