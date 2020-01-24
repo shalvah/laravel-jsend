@@ -26,7 +26,7 @@ public function create(Request $request)
 }
 ```
 
-(Optional) Use the `JsendExceptionFormatter` trait in `App\Exceptions\Handler` to send JSend-compliant responses for generic and validation errors if a request expects JSON:
+You can also add the `JsendExceptionFormatter` trait in `App\Exceptions\Handler` to format JSON responses for unhandled exceptions and Laravel validation errors as JSend:
 ```php
 class Handler extends ExceptionHandler
 {
