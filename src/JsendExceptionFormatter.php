@@ -2,12 +2,12 @@
 
 namespace Shalvah\LaravelJsend;
 
-use Exception;
+use Throwable;
 use Illuminate\Support\Arr;
 use Illuminate\Validation\ValidationException;
 
 /**
- * @mixin \App\Exceptions\Handler
+ * @mixin \Illuminate\Foundation\Exceptions\Handler
  */
 trait JsendExceptionFormatter
 {
@@ -33,7 +33,7 @@ trait JsendExceptionFormatter
      * @param  \Exception $e
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
      */
-    protected function prepareJsonResponse($request, Exception $e)
+    protected function prepareJsonResponse($request, Throwable $e)
     {
         $message = 'Server Error';
         if (config('app.debug') || $this->isHttpException($e)) {
