@@ -1,41 +1,45 @@
 {
-  "name": "shalvah/laravel-jsend",
-  "description": "Laravel helpers to easily send JSend-compliant responses",
-  "keywords": ["jsend", "laravel", "json"],
-  "license": "MIT",
-  "homepage": "http://shalvah.me/laravel-jsend",
-  "support": {
-    "issues": "https://github.com/shalvah/laravel-jsend/issues",
-    "source": "https://github.com/shalvah/laravel-jsend"
-  },
-  "authors": [
-    {
-      "name": "Shalvah Adebayo",
-      "email": "shalvah.adebayo@gmail.com"
-    }
-  ],
-  "require": {
-    "php": ">=7.2.5",
-    "laravel/framework": "^7.0|^8.0|^9.0"
-  },
-  "require-dev": {
-    "orchestra/testbench": "^5.0|^6.0",
-    "phpunit/phpunit": "^8.0"
-  },
-  "autoload": {
-    "files": [
-      "src/helpers.php"
+    "name": "shalvah/laravel-jsend",
+    "description": "Laravel helpers to easily send JSend-compliant responses",
+    "keywords": [
+        "jsend",
+        "laravel",
+        "json"
     ],
-    "psr-4": {
-      "Shalvah\\LaravelJsend\\": "src/"
+    "license": "MIT",
+    "homepage": "http://shalvah.me/laravel-jsend",
+    "support": {
+        "issues": "https://github.com/shalvah/laravel-jsend/issues",
+        "source": "https://github.com/shalvah/laravel-jsend"
+    },
+    "authors": [
+        {
+            "name": "Shalvah Adebayo",
+            "email": "shalvah.adebayo@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.2.5",
+        "laravel/framework": "^7.0|^8.0|^9.0|^10.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^5.0|^6.0|^8.0",
+        "phpunit/phpunit": "^8.0|^9.5.10"
+    },
+    "autoload": {
+        "files": [
+            "src/helpers.php"
+        ],
+        "psr-4": {
+            "Shalvah\\LaravelJsend\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Shalvah\\LaravelJsend\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit tests"
     }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Shalvah\\LaravelJsend\\Tests\\": "tests/"
-    }
-  },
-  "scripts": {
-    "test": "phpunit tests"
-  }
 }
