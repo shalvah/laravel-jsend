@@ -18,13 +18,21 @@ class Test extends TestCase
     {
         $response = jsend_success();
         $this->assertInstanceOf(Response::class, $response);
-        $this->assertEquals($response->getStatusCode(), 200);
-        $this->assertArraySubset(['status' => 'success'], json_decode($response->getContent(), true));
+        $this->assertEquals(200, $response->getStatusCode());
+
+        $contentArray = json_decode($response->getContent(), true);
+        $this->assertArrayHasKey('status', $contentArray);
+        $this->assertSame('success', $contentArray['status']);
 
         $response = jsend_success('hi');
         $this->assertInstanceOf(Response::class, $response);
-        $this->assertEquals($response->getStatusCode(), 200);
-        $this->assertArraySubset(['status' => 'success', 'data' => 'hi'], json_decode($response->getContent(), true));
+        $this->assertEquals(200, $response->getStatusCode());
+
+        $contentArray = json_decode($response->getContent(), true);
+        $this->assertArrayHasKey('status', $contentArray);
+        $this->assertArrayHasKey('data', $contentArray);
+        $this->assertSame('success', $contentArray['status']);
+        $this->assertSame('hi', $contentArray['data']);
     }
 
     /** @test */
@@ -38,11 +46,13 @@ class Test extends TestCase
 
         $response = jsend_success($model);
         $this->assertInstanceOf(Response::class, $response);
-        $this->assertEquals($response->getStatusCode(), 200);
-        $this->assertArraySubset([
-            'status' => 'success',
-            'data' => ['id' => 2, 'name' => 'Nein']
-        ], json_decode($response->getContent(), true));
+        $this->assertEquals(200, $response->getStatusCode());
+
+        $contentArray = json_decode($response->getContent(), true);
+        $this->assertArrayHasKey('status', $contentArray);
+        $this->assertArrayHasKey('data', $contentArray);
+        $this->assertSame('success', $contentArray['status']);
+        $this->assertSame(['id' => 2, 'name' => 'Nein'], $contentArray['data']);
     }
 
     /** @test */
@@ -51,8 +61,13 @@ class Test extends TestCase
         $message = 'Something happened.';
         $response = jsend_error($message);
         $this->assertInstanceOf(Response::class, $response);
-        $this->assertEquals($response->getStatusCode(), 500);
-        $this->assertArraySubset(['status' => 'error', 'message' => $message], json_decode($response->getContent(), true));
+        $this->assertEquals(500, $response->getStatusCode());
+
+        $contentArray = json_decode($response->getContent(), true);
+        $this->assertArrayHasKey('status', $contentArray);
+        $this->assertArrayHasKey('message', $contentArray);
+        $this->assertSame('error', $contentArray['status']);
+        $this->assertSame($message, $contentArray['message']);
     }
 
     /** @test */
@@ -61,10 +76,12 @@ class Test extends TestCase
         $message = 'Something happened.';
         $response = jsend_fail(['message' => $message]);
         $this->assertInstanceOf(Response::class, $response);
-        $this->assertEquals($response->getStatusCode(), 400);
-        $this->assertArraySubset([
-            'status' => 'fail',
-            'data' => ['message' => $message]
-        ], json_decode($response->getContent(), true));
+        $this->assertEquals(400, $response->getStatusCode());
+
+        $contentArray = json_decode($response->getContent(), true);
+        $this->assertArrayHasKey('status', $contentArray);
+        $this->assertArrayHasKey('data', $contentArray);
+        $this->assertSame('fail', $contentArray['status']);
+        $this->assertSame(['message' => $message], $contentArray['data']);
     }
 }
