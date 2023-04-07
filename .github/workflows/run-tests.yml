@@ -1,0 +1,32 @@
+name: Tests
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php:
+        - '8.2'
+        - '8.1'
+        - '8.0'
+        - '7.4'
+        - '7.3'
+        - '7.2'
+
+    name: Tests (PHP ${{ matrix.php }} 
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup PHP ${{ matrix.php }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath
+          coverage: none
+      - run: composer install
+      - run: composer test
