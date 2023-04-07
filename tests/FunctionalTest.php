@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 use Orchestra\Testbench\TestCase;
 use Symfony\Component\HttpFoundation\Response;
 
-class Test extends TestCase
+class FunctionalTest extends TestCase
 {
     /** @test */
     public function jsend_success_generates_a_response_with_status_code_200()
